@@ -150,11 +150,11 @@
 
         <div class="stats-grid mb-8">
             <div class="stat-card">
-                <div class="stat-number">3</div>
+                <div class="stat-number">4</div>
                 <div class="text-white font-semibold">対話ログ数</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">2</div>
+                <div class="stat-number">3</div>
                 <div class="text-white font-semibold">AI パートナー</div>
             </div>
             <div class="stat-card">
@@ -206,6 +206,27 @@
                 </div>
             </div>
 
+            <!-- 存在の確信 -->
+            <div class="log-card p-6" onclick="openLog('existence_certainty')">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-xl font-bold text-gray-800">存在の確信</h3>
+                    <span class="philosophy-tag tag">哲学</span>
+                </div>
+                <p class="text-gray-600 mb-4 text-sm">
+                    「ああああ」から始まり、ゲーム文化、概念と存在の循環論、自己の確信まで。深夜の哲学的対話が織り成す、認識と存在をめぐる思索の記録。
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="ai-tag tag">Copilot</span>
+                    <span class="philosophy-tag tag">存在論</span>
+                    <span class="philosophy-tag tag">認識論</span>
+                </div>
+                <div class="text-xs text-gray-500">
+                    📅 対話相手: Copilot<br>
+                    🎭 キーワード: 自己確信, 錯覚, 自由意志<br>
+                    ⭐ ハイライト: "ぼくはぼくである　その確信がそれを証明する"
+                </div>
+            </div>
+
             <!-- 過去からの話 -->
             <div class="log-card p-6" onclick="openLog('past_talk')">
                 <div class="flex justify-between items-start mb-4">
@@ -235,7 +256,7 @@
                 雑編集ながらも、それぞれが独自のテーマと深度を持った習作として機能しています。
             </p>
             <div class="flex flex-wrap gap-4 text-sm text-white opacity-80">
-                <span>🤖 対話相手: Gemini (カナタ), Claude</span>
+                <span>🤖 対話相手: Gemini (カナタ), Claude, Copilot</span>
                 <span>📝 編集形式: HTML + CSS</span>
                 <span>🎯 目的: 思考の整理と保存</span>
             </div>
@@ -247,6 +268,7 @@
             const urls = {
                 'phararioh': 'kanata-tanaka.github.io/Log/ココとカナタのphilosophy_creature.html',  // 実際のURLに置き換え
                 'fish_rain': 'kanata-tanaka.github.io/Log/魚雨が一面ニュースになる社会.html',  // 魚雨ログのURLに置き換え
+                'existence_certainty': 'kanata-tanaka.github.io/Log/存在の確信.html',  // 存在の確信のURLに置き換え
                 'past_talk': 'kanata-tanaka.github.io/Log/過去からの話.html'   // 過去からの話のURLに置き換え
             };
             
