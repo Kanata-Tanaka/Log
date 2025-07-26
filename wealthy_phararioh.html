@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>金満家ファラリオ</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            min-height: 100vh;
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .mansion {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            background: linear-gradient(45deg, #2c1810, #3d2817);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            border: 3px solid #d4af37;
+        }
+
+        .phararioh-wealthy {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .phararioh-body {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #fff8dc, #f5deb3);
+            border-radius: 50% 50% 45% 45%;
+            margin: 0 auto 20px;
+            position: relative;
+            border: 4px solid #d4af37;
+            animation: gentle-float 3s ease-in-out infinite;
+        }
+
+        .crown {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 40px;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            border-radius: 10px 10px 0 0;
+            border: 2px solid #b8860b;
+        }
+
+        .crown::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 20%;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 20px solid #ffd700;
+        }
+
+        .crown::after {
+            content: '';
+            position: absolute;
+            top: -15px;
+            right: 20%;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 20px solid #ffd700;
+        }
+
+        .crown-center {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 25px solid #ffd700;
+        }
+
+        .eyes {
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 30px;
+        }
+
+        .eye {
+            width: 25px;
+            height: 25px;
+            background: #2c1810;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .eye-shine {
+            position: absolute;
+            top: 5px;
+            left: 8px;
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .monocle {
+            position: absolute;
+            top: -5px;
+            right: -20px;
+            width: 35px;
+            height: 35px;
+            border: 3px solid #d4af37;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nose {
+            position: absolute;
+            top: 95px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 8px;
+            background: #8b4513;
+            border-radius: 50%;
+        }
+
+        .mouth {
+            position: absolute;
+            top: 115px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 20px;
+            border: 3px solid #8b4513;
+            border-top: none;
+            border-radius: 0 0 40px 40px;
+        }
+
+        .mustache {
+            position: absolute;
+            top: 108px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 15px;
+            background: #2c1810;
+            border-radius: 30px;
+        }
+
+        .ears {
+            position: absolute;
+            top: 50px;
+            width: 100%;
+        }
+
+        .ear {
+            position: absolute;
+            width: 40px;
+            height: 60px;
+            background: linear-gradient(135deg, #fff8dc, #f5deb3);
+            border-radius: 50% 50% 40% 40%;
+            border: 3px solid #d4af37;
+        }
+
+        .ear.left {
+            left: -25px;
+            transform: rotate(-20deg);
+        }
+
+        .ear.right {
+            right: -25px;
+            transform: rotate(20deg);
+        }
+
+        .bow-tie {
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 30px;
+            background: linear-gradient(45deg, #8b0000, #dc143c);
+            border-radius: 10px;
+        }
+
+        .bow-tie::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 40px;
+            background: #2c1810;
+            border-radius: 5px;
+        }
+
+        .money-symbols {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .money {
+            position: absolute;
+            font-size: 30px;
+            color: #ffd700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: float-money 6s linear infinite;
+        }
+
+        .title {
+            color: #ffd700;
+            font-size: 36px;
+            font-weight: bold;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            color: #f5deb3;
+            font-size: 18px;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .wealth-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .stat-card {
+            background: rgba(212, 175, 55, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #d4af37;
+            text-align: center;
+        }
+
+        .stat-value {
+            color: #ffd700;
+            font-size: 24px;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            color: #f5deb3;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .speech-bubble {
+            position: absolute;
+            top: -80px;
+            right: -150px;
+            background: white;
+            padding: 15px;
+            border-radius: 20px;
+            border: 3px solid #d4af37;
+            color: #2c1810;
+            font-weight: bold;
+            width: 120px;
+            text-align: center;
+            animation: bubble-pulse 2s ease-in-out infinite;
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 30px;
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 15px solid white;
+        }
+
+        @keyframes gentle-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes float-money {
+            0% { 
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { 
+                transform: translateY(-50px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes bubble-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .foundation-banner {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(45deg, #8b0000, #dc143c);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            border: 2px solid #ffd700;
+            text-align: center;
+        }
+
+        .sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ffd700;
+            border-radius: 50%;
+            animation: sparkle 3s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="mansion">
+        <div class="money-symbols" id="moneyContainer"></div>
+        <div class="sparkles" id="sparkleContainer"></div>
+        
+        <h1 class="title">金満家ファラリオ</h1>
+        <p class="subtitle">Philosophy & Strategy & Technology Creature</p>
+        
+        <div class="phararioh-wealthy">
+            <div class="phararioh-body">
+                <div class="crown">
+                    <div class="crown-center"></div>
+                </div>
+                <div class="ears">
+                    <div class="ear left"></div>
+                    <div class="ear right"></div>
+                </div>
+                <div class="eyes">
+                    <div class="eye">
+                        <div class="eye-shine"></div>
+                    </div>
+                    <div class="eye">
+                        <div class="eye-shine"></div>
+                        <div class="monocle"></div>
+                    </div>
+                </div>
+                <div class="mustache"></div>
+                <div class="nose"></div>
+                <div class="mouth"></div>
+                <div class="bow-tie"></div>
+                <div class="speech-bubble">
+                    ありのままーの<br>きみていてー♪
+                </div>
+            </div>
+            <div class="foundation-banner">
+                ミゼリコルディア財団 創設者・会長
+            </div>
+        </div>
+
+        <div class="wealth-stats">
+            <div class="stat-card">
+                <span class="stat-value">∞</span>
+                <div class="stat-label">総資産（億円）</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value">1,000</span>
+                <div class="stat-label">支援した孤児の数</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value">1</span>
+                <div class="stat-label">開発したAI</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value">♪</span>
+                <div class="stat-label">歌唱力</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // お金のシンボルを降らせる
+        const moneySymbols = ['💰', '💵', '💴', '💶', '💷', '🪙', '💎'];
+        const moneyContainer = document.getElementById('moneyContainer');
+        
+        function createMoney() {
+            const money = document.createElement('div');
+            money.className = 'money';
+            money.textContent = moneySymbols[Math.floor(Math.random() * moneySymbols.length)];
+            money.style.left = Math.random() * 100 + '%';
+            money.style.animationDelay = Math.random() * 2 + 's';
+            money.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            moneyContainer.appendChild(money);
+            
+            // アニメーション終了後に要素を削除
+            setTimeout(() => {
+                if (money.parentNode) {
+                    money.parentNode.removeChild(money);
+                }
+            }, 7000);
+        }
+        
+        // 定期的にお金を降らせる
+        setInterval(createMoney, 800);
+        
+        // キラキラエフェクト
+        const sparkleContainer = document.getElementById('sparkleContainer');
+        
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            sparkle.style.animationDelay = Math.random() * 3 + 's';
+            sparkleContainer.appendChild(sparkle);
+            
+            setTimeout(() => {
+                if (sparkle.parentNode) {
+                    sparkle.parentNode.removeChild(sparkle);
+                }
+            }, 3000);
+        }
+        
+        // キラキラを定期的に生成
+        setInterval(createSparkle, 300);
+        
+        // 初期のキラキラを配置
+        for (let i = 0; i < 20; i++) {
+            setTimeout(createSparkle, i * 150);
+        }
+    </script>
+</body>
+</html>
