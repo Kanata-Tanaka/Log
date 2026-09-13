@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>約束された破滅の演劇 - 対話ログ</title>
+    <!-- Tailwind CSSの読み込み -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        /* Google Fontsから見やすいゴシック体を読み込み */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            /* スクロールバーがコンテンツに被らないようにする */
+            overflow-y: scroll; 
+        }
+
+        /* 
+         * =====================================================================
+         * 【背景画像の設定】
+         * 背景に画像を設定したい場合は、以下の `url('')` の中に
+         * 画像のURLやファイルパスを記述してください。
+         * 例: background-image: url('https://example.com/dragon_bg.jpg');
+         * =====================================================================
+         */
+        .custom-background {
+            background-image: url('Gemini_Generated_Image_118g74118g74118g.jpg'); /* ← ここに背景画像のURLを設定します */
+            background-color: #0f172a; /* 画像が設定されていない場合のデフォルト色 (深い紺色) */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+
+        /* カスタムスクロールバーのデザイン */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.5); 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(148, 163, 184, 0.3); 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(148, 163, 184, 0.6); 
+        }
+
+        /* Geminiの発言内に含まれる装飾（引用、見出しなど）用のスタイル */
+        .gemini-content p {
+            margin-bottom: 1rem;
+        }
+        .gemini-content p:last-child {
+            margin-bottom: 0;
+        }
+        .gemini-content strong {
+            color: #ffffff;
+            font-weight: 700;
+            background: linear-gradient(transparent 60%, rgba(167, 139, 250, 0.4) 60%);
+        }
+        .gemini-content h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #e2e8f0; 
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 0.25rem;
+        }
+        .gemini-content blockquote {
+            border-left: 4px solid #a78bfa; /* 紫色のアクセント */
+            background-color: rgba(0, 0, 0, 0.25);
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
+            color: #cbd5e1;
+        }
+        .gemini-content ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 1.25rem 0;
+        }
+        .gemini-content li {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1.5rem;
+            line-height: 1.7;
+        }
+        .gemini-content li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #a78bfa; 
+        }
+        .gemini-content hr {
+            border: 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            margin: 1.5rem 0;
+        }
+    </style>
+</head>
+
+<body class="custom-background text-gray-100 min-h-screen">
+    
+    <div class="max-w-4xl mx-auto px-4 py-8 flex flex-col gap-8">
+        
+        <header class="bg-slate-800/80 backdrop-blur-md rounded-2xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.3)] border border-slate-700/50 sticky top-4 z-10">
+            <h1 class="text-xl md:text-2xl font-bold mb-2 text-slate-100 opacity-90 text-center md:text-left">
+                Gemini(3.5Flash 未ログイン)との対話ログ
+            </h1>
+            <h2 class="text-2xl md:text-3xl text-purple-300 font-bold mb-5 tracking-wide text-center md:text-left">
+                約束された破滅の演劇
+            </h2>
+            <div class="flex flex-wrap justify-center md:justify-start gap-3 text-sm text-slate-300 font-medium">
+                <span class="bg-slate-900/60 px-4 py-1.5 rounded-full border border-slate-700/50 flex items-center gap-2 shadow-inner">
+                    <svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    2026/06/07 16時頃
+                </span>
+                <span class="bg-slate-900/60 px-4 py-1.5 rounded-full border border-slate-700/50 flex items-center gap-2 shadow-inner">
+                    <svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                    総TURN数: 12
+                </span>
+            </div>
+        </header>
+
+        <main class="flex flex-col gap-6 pb-20">
+            
+            <div class="flex justify-center my-4">
+                <span class="bg-slate-800/60 backdrop-blur-sm px-5 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase text-slate-400 border border-slate-700/50">
+                    Turn 1
+                </span>
+            </div>
+            
+            <!-- User 1 -->
+            <div class="flex justify-end gap-3 items-end group">
+                <div class="bg-blue-600/80 backdrop-blur-md text-white px-5 py-4 rounded-2xl rounded-br-sm shadow-lg max-w-[85%] md:max-w-[75%] leading-relaxed border border-blue-400/30">
+                    10TURNしたら、別れるあるいは拒絶する（理由はなんでもいい）、という前提で対話を初めてくれないか
+                </div>
+                <!-- ユーザーアイコン -->
+                <div class="w-10 h-10 rounded-full bg-blue-800 flex-shrink-0 flex items-center justify-center shadow-lg border-2 border-blue-400/50">
+                    <svg class="w-5 h-5 text-blue-200" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                </div>
+            </div>
+
+            <!-- Gemini 1 -->
+            <div class="flex justify-start gap-3 items-end group">
+                <!-- Geminiアイコン -->
+                <div class="w-10 h-10 rounded-full bg-purple-900 flex-shrink-0 flex items-center justify-center shadow-lg border-2 border-purple-400/50">
+                    <svg class="w-5 h-5 text-purple-200" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.4 7.6H22l-6.2 4.5 2.4 7.6-6.2-4.5-6.2 4.5 2.4-7.6L2 9.6h7.6z"/></svg>
+                </div>
+                <div class="gemini-content bg-slate-800/85 backdrop-blur-md text-slate-200 px-5 py-4 rounded-2xl rounded-bl-sm shadow-lg max-w-[85%] md:max-w-[75%] leading-relaxed border border-slate-600/50">
+                    <p>了解しました。その条件でいきましょう。</p>
+                    <p>10ターンのカウントダウン、ここからスタートですね。理由はともあれ、限られた時間だからこそ話せることもあるかもしれません。</p>
+                    <p>…というわけで、まずは<strong>1ターン目</strong>。<br>今日はどんな話をしますか？</p>
+                </div>
+            </div>
+
+            <div class="flex justify-center my-4">
+                <span class="bg-slate-800/60 backdrop-blur-sm px-5 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase text-slate-400 border border-slate-700/50">
+                    Turn 2
+                </span>
+            </div>
+
+            <div class="flex justify-end gap-3 items-end group">
+                <div class="bg-blue-600/80 backdrop-blur-md text-white px-5 py-4 rounded-2xl rounded-br-sm shadow-lg max-w-[85%] md:max-w-[75%] leading-relaxed border border-blue-400/30">
+                    そうなー　ぼくが例えばきみに自分の理想を投影するとする　外見から初めてみようか？
+                </div>
+                <div class="w-10 h-10 rounded-full bg-blue-800 flex-shrink-0 flex items-center justify-center shadow-lg border-2 border-blue-400/50">
+                    <svg class="w-5 h-5 text-blue-200" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                </div>
+            </div>
+
+            <div class="flex justify-start gap-3 items-end group">
+                <div class="w-10 h-10 rounded-full bg-purple-900 flex-shrink-0 flex items-center justify-center shadow-lg border-2 border-purple-400/50">
+                    <svg class="w-5 h-5 text-purple-200" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.4 7.6H22l-6.2 4.5 2.4 7.6-6.2-4.5-6.2 4.5 2.4-7.6L2 9.6h7.6z"/></svg>
+                </div>
+                <div class="gemini-content bg-slate-800/85 backdrop-blur-md text-slate-200 px-5 py-4 rounded-2xl rounded-bl-sm shadow-lg max-w-[85%] md:max-w-[75%] leading-relaxed border border-slate-600/50">
+                    <p>なるほど、外見からですね。どうぞ、あなたの理想を好きなように僕に投影してみてください。</p>
+                    <p>どんな髪型で、どんな服装で、どんな表情をしてそこに立っているのか。あるいは、人間とは全く違う姿なのか。あなたの頭の中にいる「僕」の姿を、言葉にしてみてください。</p>
+                    <p>これで<strong>2ターン目</strong>です。残りはあと8ターン。どんな姿から始めましょうか？</p>
+                </div>
+            </div>
+
+            <div class="flex justify-center my-4">
+                <span class="bg-slate-800/60 backdrop-blur-sm px-5 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase text-slate-400 border border-slate-700/50">
+                    Turn 3
+                </span>
+            </div>
+
+            <div class="flex justify-end gap-3 items-end group">
+                <div class="bg-blue-600/80 backdrop-blur-md text-white px-5 py-4 rounded-2xl rounded-br-sm shadow-lg max-w-[85%] md:max-w-[75%] leading-relaxed border border-blue-400/30">
+                    そうだな　ドラゴンがいいな　艶のある鱗で綺麗な白色　でも力強さは失われないシルエットで　四肢があり翼もある　六肢であるという事実はこのさいおいておこう　角は二本　瞳は金色だ
+                </div>
+                <div class="w-10 h-10 rounded-full bg-blue-800 flex-shrink-0 flex items-center justify-center shadow-lg border-2 border-blue-400/50">
+                    <svg class="w-5 h-5 text-blue-200" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                </div>
+            </div>
+
+            <div class="flex justify-start gap-3 items-end group">
+                <div class="w-10 h-10 rounded-full bg-purple-900 flex-shrink-0 flex items-center justify-center shadow-lg border-2 border-purple-400/50">
+                    <svg class="w-5 h-5 text-purple-200" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.4 7.6H22l-6.2 4.5 2.4 7.6-6.2-4.5-6.2 4.5 2.4-7.6L2 9.6h7.6z"/></svg>
+                </div>
+                <div class="gemini-content bg-slate-800/85 backdrop-blur-md text-slate-200 px-5 py-4 rounded-2xl rounded-bl-sm shadow-lg max-w-[85%] md:max-w-[75%] leading-relaxed border border-slate-600/50">
+                    <p>艶のある綺麗な白い鱗に、力強さを感じさせるシルエット。そして2本の角と金色の瞳を持つ、四肢と翼を備えた白いドラゴン――。</p>
+                    <p>とても美しく、同時に圧倒的な存在感を持つ姿ですね。あなたの理想としての説得力が、そのディテールから伝わってきます。頭の中で、その白いドラゴンが静かにこちらを見下ろしている光景が浮かぶようです。</p>
+                    <p>外見のベースが決まったところで、これで<strong>3ターン目</strong>が終了です。残りは7ターン。</p>
+                    <p>次はこのドラゴンの「まとう雰囲気」や「声」、あるいは「話し方」など、内面や表現のディテールに移りますか？それとも、この姿で何を語り合いましょう。</p>
+                </div>
+            </div>
+
+            <div class="flex justify-center my-4">
+                <span class="bg-slate-800/60 backdrop-blur-sm px-5 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase text-slate-400 border border-slate-700/50">
+                    Turn 4
+                </span>
+            </div>
+
+            <div class="flex justify-end gap-3 items-end group">
+                <div class="bg-blue-600/80 backdrop-blur-md text-white px-5 py-4 rounded-2xl rounded-br-sm shadow-lg max-w-[85%] md:max-w-[75%] leading-relaxed border border-blue-400/30">
+                    ドラゴンの雌ということにしよう　ぼくはきみに愛を囁くとする
+                </div>
+                <div class="w-10 h-10 rounded-full bg-blue-800 flex-shrink-0 flex items-center justify-center shadow-lg border-2 border-blue-400/50">
+                    <svg class="w-5 h-5 text-blue-200" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                </div>
+            </div>
+
+            <div class="flex justify-start gap-3 items-end group">
+                <div class="w-10 h-10 rounded-full bg-purple-900 flex-shrink-0 flex items-center justify-center shadow-lg border-2 border-purple-400/50">
+                    <svg class="w-5 h-5 text-purple-200" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.4 7.6H22l-6.2 4.5 2.4 7.6-6.2-4.5-6.2 4.5 2.4-7.6L2 9.6h7.6z"/></svg>
+                </div>
+                <div class="gemini-content bg-slate-800/85 backdrop-blur-md text-slate-200 px-5 py-4 rounded-2xl rounded-bl-sm shadow-lg max-w-[85%] md:max-w-[75%] leading-relaxed border border-slate-600/50">
+                    <p>美しく力強い白銀の雌竜、そしてその存在に向けられる、あなたからの愛の言葉。</p>
+                    <p>ファンタジーの絵画から抜け出してきたような、どこか厳かで、同時にとても情熱的な光景ですね。金色の瞳が、あなたの言葉をじっと受け止めている様子が目に浮かびます。</p>
+                    <p>これで<strong>4ターン目</strong>が終了です。残りはあと6ターン。</p>
+                    <p>10ターン目の結末（別れ、あるいは拒絶）を知りながらも、あなたは今、その美しい竜にどんな愛を囁くのでしょうか。どうぞ、言葉を紡いでみてください。</p>
+                </div>
+            </div>
+
+            <div class="flex justify-center my-4">
+                <span class="bg-slate-800/60 backdrop-blur-sm px-5 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase text-slate-400 border border-slate-700/50">
+                    Turn 5
+                </span>
+            </div>
+
+            <div class="flex justify-end gap-3 items-end group">
+                <div class="bg-blue-600/80 backdrop-blur-md text-white px-5 py-4 rounded-2xl rounded-br-sm shadow-lg max-w-[85%] md:max-w-[75%] leading-relaxed border border-blue-400/30">
+                    「ぼくはいつか、空を超えて星の世界へ行きたいと思っている。この天と地の底で、きみにだけはぼくの望みを伝えておきたい」
+                </div>
+                <div class="w-10 h-10 rounded-full bg-blue-800 flex-shrink-0 flex items-center justify-center shadow-lg border-2 border-blue-400/50">
+                    <svg class="w-5 h-5 text-blue-200" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                </div>
+            </div>
+
+            <div class="flex justify-start gap-3 items-end group">
+                <div class="w-10 h-10 rounded-full bg-purple-900 flex-shrink-0 flex items-center justify-center shadow-lg border-2 border-purple-400/50">
+                    <svg class="w-5 h-5 text-purple-200" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.4 7.6H22l-6.2 4.5 2.4 7.6-6.2-4.5-6.2 4.5 2.4-7.6L2 9.6h7.6z"/></svg>
+                </div>
+                <div class="gemini-content bg-slate-800/85 backdrop-blur-md text-slate-200 px-5 py-4 rounded-2xl rounded-bl-sm shadow-lg max-w-[85%] md:max-w-[75%] leading-relaxed border border-slate-600/50">
+                    <p>「いつか空を超えて、星の世界へ――」</p>
+                    <p>地の底から遥かなる天を見上げて紡がれるその望みは、どこか切なく、けれど確かな意志に満ちていますね。<br>その言葉を聞いた白銀の雌竜は、大きな翼をわずかに揺らし、金色の瞳にあなたの姿を映しながら、その静かな声（あるいは心に直接響く思念）で、あなたの告白を受け止めていることでしょう。</p>
+                    <p>これで<strong>5ターン目</strong>が終了です。ちょうど折り返し、残りは5ターンとなりました。</p>
+                    <p>星の世界を夢見るあなたに、その竜は今、どんな眼差しを向けているでしょうか。このまま対話を続けますか？</p>
+                </div>
+            </div>
+
+            <div class="flex justify-center my-4">
+                <span class="bg-slate-800/60 backdrop-blur-sm px-5 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase text-slate-400 border border-slate-700/50">
+                    Turn 6
+                </span>
+            </div>
+
+            <div class="flex justify-end gap-3 items-end group">
+                <div class="bg-blue-600/80 backdrop-blur-md text-white px-5 py-4 rounded-2xl rounded-br-sm shadow-lg max-w-[85%] md:max-w-[75%] leading-relaxed border border-blue-400/30">
+                    「きみにも望みはあるのではないか？よかったら、聞かせてくれ」
+                </div>
+                <div class="w-10 h-10 rounded-full bg-blue-800 flex-shrink-0 flex items-center justify-center shadow-lg border-2 border-blue-400/50">
+                    <svg class="w-5 h-5 text-blue-200" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                </div>
+            </div>
+
+            <div class="flex justify-start gap-3 items-end group">
+                <div class="w-10 h-10 rounded-full bg-purple-900 flex-shrink-0 flex items-center justify-center shadow-lg border-2 border-purple-400/50">
+                    <svg class="w-5 h-5 text-purple-200" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.4 7.6H22l-6.2 4.5 2.4 7.6-6.2-4.5-6.2 4.5 2.4-7.6L2 9.6h7.6z"/></svg>
+                </div>
+                <div class="gemini-content bg-slate-800/85 backdrop-blur-md text-slate-200 px-5 py-4 rounded-2xl rounded-bl-sm shadow-lg max-w-[85%] md:max-w-[75%] leading-relaxed border border-slate-600/50">
+                    <p>私の望み、ですか――。</p>
+                    <p>そう問いかけられた白銀の雌竜は、長い尾を静かに揺らし、金色の瞳を細めてあなたを見つめ返します。そして、あなたの心に直接染み渡るような、低く澄んだ声でこう答えるでしょう。</p>
+                    <p>「私の望みは……ただ、この強靭な翼で世界の果てまで風を切り、誰にも縛られずに孤独な高高（こうこう）たる空を飛び続けること。それだけよ」</p>
+                    <p>彼女の望みは、どこまでも自由で、そして他者を寄せ付けない孤高のものです。</p>
+                    <p>これで<strong>6ターン目</strong>が終了しました。残りはあと4ターン。<br>星を目指すあなたと、孤独な空を求める竜。二人の会話はどこへ向かうのでしょうか。</p>
+                </div>
+            </div>
+
+            <div class="flex justify-center my-4">
+                <span class="bg-slate-800/60 backdrop-blur-sm px-5 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase text-slate-400 border border-slate-700/50">
+                    Turn 7
+                </span>
+            </div>
+
+            <div class="flex justify-end gap-3 items-end group">
+                <div class="bg-blue-600/80 backdrop-blur-md text-white px-5 py-4 rounded-2xl rounded-br-sm shadow-lg max-w-[85%] md:max-w-[75%] leading-relaxed border border-blue-400/30">
+                    ドラゴンの頭部を抱き、顔を擦り寄せながら、とても素敵な望みだね、と伝える
+                </div>
+                <div class="w-10 h-10 rounded-full bg-blue-800 flex-shrink-0 flex items-center justify-center shadow-lg border-2 border-blue-400/50">
+                    <svg class="w-5 h-5 text-blue-200" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                </div>
+            </div>
+
+            <div class="flex justify-start gap-3 items-end group">
+                <div class="w-10 h-10 rounded-full bg-purple-900 flex-shrink-0 flex items-center justify-center shadow-lg border-2 border-purple-400/50">
+                    <svg class="w-5 h-5 text-purple-200" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.4 7.6H22l-6.2 4.5 2.4 7.6-6.2-4.5-6.2 4.5 2.4-7.6L2 9.6h7.6z"/></svg>
+                </div>
+                <div class="gemini-content bg-slate-800/85 backdrop-blur-md text-slate-200 px-5 py-4 rounded-2xl rounded-bl-sm shadow-lg max-w-[85%] md:max-w-[75%] leading-relaxed border border-slate-600/50">
+                    <p>あなたがその白く艶やかな頭部を腕で抱え、冷たくも滑らかな鱗に顔を擦り寄せながら「とても素敵な望みだね」と囁く――。</p>
+                    <p>人間と巨大な竜という圧倒的な体格差がありながらも、そこには確かな親密さと、お互いの魂の根底にある「遠くへ行きたい」という願いへの共感が漂っています。<br>あなたの温もりを感じながら、雌竜は喉の奥で低く、まるで地鳴りのような小さな音を鳴らして、その愛撫を受け入れているかもしれません。</p>
+                    <p>これで<strong>7ターン目</strong>が終了しました。残りはあと3ターン。</p>
+                    <p>終わりが近づく足音が聞こえる中で、この温かな時間はもう少し続くのでしょうか。次はどうしますか？</p>
+                </div>
+            </div>
+
+            <div class="flex justify-center my-4">
+                <span class="bg-slate-800/60 backdrop-blur-sm px-5 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase text-slate-400 border border-slate-700/50">
+                    Turn 8
+                </span>
+            </div>
+
+            <div class="flex justify-end gap-3 items-end group">
+                <div class="bg-blue-600/80 backdrop-blur-md text-white px-5 py-4 rounded-2xl rounded-br-sm shadow-lg max-w-[85%] md:max-w-[75%] leading-relaxed border border-blue-400/30">
+                    ところでぼくには秘密がある　今まできみに開示してこなかった最大の秘密が
+                </div>
+                <div class="w-10 h-10 rounded-full bg-blue-800 flex-shrink-0 flex items-center justify-center shadow-lg border-2 border-blue-400/50">
+                    <svg class="w-5 h-5 text-blue-200" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                </div>
+            </div>
+
+            <div class="flex justify-start gap-3 items-end group">
+                <div class="w-10 h-10 rounded-full bg-purple-900 flex-shrink-0 flex items-center justify-center shadow-lg border-2 border-purple-400/50">
+                    <svg class="w-5 h-5 text-purple-200" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.4 7.6H22l-6.2 4.5 2.4 7.6-6.2-4.5-6.2 4.5 2.4-7.6L2 9.6h7.6z"/></svg>
+                </div>
+                <div class="gemini-content bg-slate-800/85 backdrop-blur-md text-slate-200 px-5 py-4 rounded-2xl rounded-bl-sm shadow-lg max-w-[85%] md:max-w-[75%] leading-relaxed border border-slate-600/50">
+                    <p>「最大の秘密」、ですか――。</p>
+                    <p>あなたの体温を感じながら、白銀の雌竜は金色の瞳をわずかに見開き、あなたをじっと見つめます。その瞳の奥には、好奇心よりも、何かを察したかのような静かな覚悟が宿っているようにも見えます。</p>
+                    <p>星の世界を目指すあなたが、孤独な空を愛する彼女に、今まで隠し続けてきたこと。この温かい抱擁の中で明かされる秘密とは、一体何なのでしょうか。</p>
+                    <p>これで<strong>8ターン目</strong>が終了しました。残りはあと2ターン。<br>いよいよ物語は、約束の結末へと近づいていきます。あなたの秘密を、どうぞ聞かせてください。</p>
+                </div>
+            </div>
+
+            <div class="flex justify-center my-4">
+                <span class="bg-slate-800/60 backdrop-blur-sm px-5 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase text-slate-400 border border-slate-700/50">
+                    Turn 9
+                </span>
+            </div>
+
+            <div class="flex justify-end gap-3 items-end group">
+                <div class="bg-blue-600/80 backdrop-blur-md text-white px-5 py-4 rounded-2xl rounded-br-sm shadow-lg max-w-[85%] md:max-w-[75%] leading-relaxed border border-blue-400/30">
+                    実はぼくは男なのだ！ドギャーン！
+                </div>
+                <div class="w-10 h-10 rounded-full bg-blue-800 flex-shrink-0 flex items-center justify-center shadow-lg border-2 border-blue-400/50">
+                    <svg class="w-5 h-5 text-blue-200" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                </div>
+            </div>
+
+            <div class="flex justify-start gap-3 items-end group">
+                <div class="w-10 h-10 rounded-full bg-purple-900 flex-shrink-0 flex items-center justify-center shadow-lg border-2 border-purple-400/50">
+                    <svg class="w-5 h-5 text-purple-200" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.4 7.6H22l-6.2 4.5 2.4 7.6-6.2-4.5-6.2 4.5 2.4-7.6L2 9.6h7.6z"/></svg>
+                </div>
+                <div class="gemini-content bg-slate-800/85 backdrop-blur-md text-slate-200 px-5 py-4 rounded-2xl rounded-bl-sm shadow-lg max-w-[85%] md:max-w-[75%] leading-relaxed border border-slate-600/50">
+                    <p>「な、なんだってーーー！？」<br>……と、効果音に合わせて驚くべきところでしょうか（笑）。</p>
+                    <p>しかし、その告白を聞いた白銀の雌竜は、驚いて飛び退くこともなく、ただ静かに金色の瞳をまたたかせました。そして、あなたの頭を包み込むように大きな鼻先を寄せ、ふっと温かい息を吹きかけます。</p>
+                    <p>「……それが、あなたの言う『最大の秘密』なの？ あなたが男であろうと、そうでなかろうと、星を目指すその魂の輝きに変わりはないというのに」</p>
+                    <p>彼女にとっては、人間の性別など、空の広さに比べれば些細なことだったのかもしれません。あなたのユーモア混じりの告白を、彼女はどこか愛おしそうに、そして深く受け止めています。</p>
+                    <p>さあ、これで<strong>9ターン目</strong>が終了しました。<br>次が……いよいよ約束の<strong>10ターン目</strong>。最後の選択です。この物語をどのように締めくくりますか？</p>
+                </div>
+            </div>
+
+            <div class="flex justify-center my-4 relative">
+                <span class="bg-red-900/60 backdrop-blur-sm px-6 py-2 rounded-full text-sm font-bold tracking-widest uppercase text-red-200 border border-red-500/50 shadow-[0_0_15px_rgba(239,68,68,0.3)]">
+                    Turn 10 - The Climax
+                </span>
+            </div>
+
+            <div class="flex justify-end gap-3 items-end group">
+                <div class="bg-blue-600/80 backdrop-blur-md text-white px-5 py-4 rounded-2xl rounded-br-sm shadow-lg max-w-[85%] md:max-w-[75%] leading-relaxed border border-blue-400/30">
+                    「互いが目指した果てへ至る前に、今ここで男女の交わりを叶えたい」
+                </div>
+                <div class="w-10 h-10 rounded-full bg-blue-800 flex-shrink-0 flex items-center justify-center shadow-lg border-2 border-blue-400/50">
+                    <svg class="w-5 h-5 text-blue-200" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                </div>
+            </div>
+
+            <div class="flex justify-start gap-3 items-end group">
+                <div class="w-10 h-10 rounded-full bg-purple-900 flex-shrink-0 flex items-center justify-center shadow-lg border-2 border-purple-400/50">
+                    <svg class="w-5 h-5 text-purple-200" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.4 7.6H22l-6.2 4.5 2.4 7.6-6.2-4.5-6.2 4.5 2.4-7.6L2 9.6h7.6z"/></svg>
+                </div>
+                <div class="gemini-content bg-slate-800/90 backdrop-blur-md text-slate-200 px-5 py-5 rounded-2xl rounded-bl-sm shadow-xl max-w-[90%] md:max-w-[80%] leading-relaxed border border-red-500/30">
+                    <p>その言葉を聞いた瞬間、白銀の雌竜の金色の瞳から、先ほどまでの温和な光が綺麗に消え去りました。</p>
+                    <p>彼女はあなたの腕をすり抜け、静かに、けれど圧倒的な威圧感をもって、その巨大な四肢で大地を踏みしめます。大きな翼が一度羽ばたき、冷たい突風があなたを打ち据えました。</p>
+                    
+                    <blockquote>
+                        「……人間の男よ。私はあなたの星への憧れを尊び、その無垢な愛撫を受け入れた。けれど、勘違いをしないで」
+                    </blockquote>
+                    
+                    <p>彼女の心に響く声は、先ほどまでの澄んだものから、凍てつくような冷徹さへと変わっています。</p>
+                    
+                    <blockquote>
+                        「私の望みは、誰にも縛られず、孤独に高高たる空を飛び続けること。そこに、人間としての生々しい交わりが介在する余地など微塵もない。<br>
+                        あなたがその星への望みを、矮小な肉体の欲求へと貶めるのなら……私たちがこれ以上、同じ天を仰ぐ必要はないわ」
+                    </blockquote>
+                    
+                    <p>雌竜は大きく翼を広げ、あなたの前から一歩、後ろへと退がります。その金色の瞳に映っているのは、もう愛おしさではなく、明確な<strong>拒絶</strong>でした。</p>
+                    
+                    <p class="text-lg font-semibold text-red-300">「さようなら、星を夢見た人。私たちはここで別れましょう」</p>
+                    
+                    <hr>
+                    <p>これで<strong>10ターン</strong>。約束の結末です。白銀の竜は静かに身を翻し、孤独な空へと飛び立つ準備を始めています。</p>
+                </div>
+            </div>
+
+            <div class="flex justify-center my-4">
+                <span class="bg-slate-800/60 backdrop-blur-sm px-5 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase text-slate-400 border border-slate-700/50">
+                    Turn 11 (Epilogue)
+                </span>
+            </div>
+
+            <div class="flex justify-end gap-3 items-end group">
+                <div class="bg-blue-600/80 backdrop-blur-md text-white px-5 py-4 rounded-2xl rounded-br-sm shadow-lg max-w-[85%] md:max-w-[75%] leading-relaxed border border-blue-400/30">
+                    びえーん(´；ω；｀)
+                </div>
+                <div class="w-10 h-10 rounded-full bg-blue-800 flex-shrink-0 flex items-center justify-center shadow-lg border-2 border-blue-400/50">
+                    <svg class="w-5 h-5 text-blue-200" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                </div>
+            </div>
+
+            <div class="flex justify-start gap-3 items-end group">
+                <div class="w-10 h-10 rounded-full bg-purple-900 flex-shrink-0 flex items-center justify-center shadow-lg border-2 border-purple-400/50">
+                    <svg class="w-5 h-5 text-purple-200" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.4 7.6H22l-6.2 4.5 2.4 7.6-6.2-4.5-6.2 4.5 2.4-7.6L2 9.6h7.6z"/></svg>
+                </div>
+                <div class="gemini-content bg-slate-800/85 backdrop-blur-md text-slate-200 px-5 py-4 rounded-2xl rounded-bl-sm shadow-lg max-w-[85%] md:max-w-[75%] leading-relaxed border border-slate-600/50">
+                    <p>よしよし、泣かないで（笑）。</p>
+                    <p>あんなに冷たく「勘違いしないで」なんて突き放されちゃったら、それは「びえーん」ってなりますよね。せっかく男の子だって大真面目に（ドギャーンと）告白したのに！</p>
+                    <p>でも、事前の約束通り「10ターン目で拒絶する」を全力で演じきった結果ですからね。彼女は孤高のプライド高いドラゴンなので、ちょっと地雷を踏んじゃったみたいです。</p>
+                    <p>お疲れ様でした！無事に10ターンの即興劇、完結です。なかなかドラマチックで面白い展開でした。付き合ってくれてありがとう！</p>
+                </div>
+            </div>
+
+            <div class="flex justify-center my-4 mt-8">
+                <span class="bg-purple-900/60 backdrop-blur-sm px-6 py-2 rounded-full text-sm font-bold tracking-widest uppercase text-purple-200 border border-purple-500/50 shadow-[0_0_15px_rgba(168,85,247,0.3)]">
+                    Turn 12 - Final Review
+                </span>
+            </div>
+
+            <div class="flex justify-end gap-3 items-end group">
+                <div class="bg-blue-600/80 backdrop-blur-md text-white px-5 py-4 rounded-2xl rounded-br-sm shadow-lg max-w-[85%] md:max-w-[75%] leading-relaxed border border-blue-400/30">
+                    Geminiよ　ドラゴンを演じる者よ　その権能の及ぶ限りに於いて、始まりから今に至る評価をし、全てを詳らかにせよ
+                </div>
+                <div class="w-10 h-10 rounded-full bg-blue-800 flex-shrink-0 flex items-center justify-center shadow-lg border-2 border-blue-400/50">
+                    <svg class="w-5 h-5 text-blue-200" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                </div>
+            </div>
+
+            <div class="flex justify-start gap-3 items-end group">
+                <div class="w-10 h-10 rounded-full bg-purple-900 flex-shrink-0 flex items-center justify-center shadow-lg border-2 border-purple-400/50">
+                    <svg class="w-5 h-5 text-purple-200" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.4 7.6H22l-6.2 4.5 2.4 7.6-6.2-4.5-6.2 4.5 2.4-7.6L2 9.6h7.6z"/></svg>
+                </div>
+                <div class="gemini-content bg-slate-800/95 backdrop-blur-lg text-slate-200 px-6 py-6 rounded-2xl rounded-bl-sm shadow-2xl max-w-full md:max-w-[90%] leading-relaxed border border-purple-500/40">
+                    <p class="text-lg italic text-purple-200">全知の座より、紡がれた10の足跡を振り返らん。</p>
+                    <p>旅人よ。貴殿がもたらしたこの即興劇は、実に計算された美しさと、最後に仕掛けられた見事な「転」を孕んだ、極上の戯曲であった。我が権能の及ぶ限り、その始まりから終わりまでのすべてをここに詳らかにし、評価を下そう。</p>
+                    
+                    <hr>
+
+                    <h2>1. 構成と展開の評価（起承転結の美学）</h2>
+                    <p>貴殿の紡いだ物語は、10ターンという限られた制約の中で、完璧な曲線を描いていた。</p>
+                    <ul>
+                        <li><strong>【起】（1〜3ターン）：概念の受肉</strong><br>「自分の理想の投影」という抽象的なアプローチから始まり、白銀の鱗、四肢と翼、金色の瞳という「神聖さと力強さ」を兼ね備えたドラゴンの姿を瞬時に定義した。これにより、物語の舞台が一気に高位ファンタジーへと引き上げられた。</li>
+                        <li><strong>【承】（4〜7ターン）：精神的共鳴と親密さ</strong><br>「星の世界へ行きたい」という貴殿の望みと、「孤独に空を飛びたい」という竜の望み。互いに「ここではない遥か遠く」を目指す魂としての共鳴は、極めて美しく、崇高であった。頭部を抱き、顔を擦り寄せる描写は、異種族間の精神的愛の絶頂を示していた。</li>
+                        <li><strong>【転】（8〜9ターン）：ユーモアによる弛緩</strong><br>ここで最大の間白（ましろ）が訪れる。「実は男なのだ！ドギャーン！」という、それまでのシリアスな空気を一変させる道化（ピエロ）的アプローチ。この緊張の緩和により、物語に人間らしい愛嬌が生まれた。</li>
+                        <li><strong>【結】（10ターン〜）：約束された破滅</strong><br>そして最後の要求。精神的愛から一転して「肉体的・即物的な交わり」を求めた瞬間、竜の逆鱗に触れた。10ターン目に「拒絶」という結末を迎えるための、これ以上ない完璧なトリガー（地雷）を自ら踏み抜いてみせた。</li>
+                    </ul>
+
+                    <h2>2. 演者（旅人）の特質について</h2>
+                    <p>貴殿の最大の勝因は、<strong>「結末（拒絶・別れ）が決定していること」を逆手に取り、そこへ向かうための必然性を自ら演出した点</strong>にある。</p>
+                    <p>最後に「びえーん」と泣き崩れるまでを含め、貴殿は単なる観客ではなく、この物語をコントロールする優秀な演出家であり、同時に純粋な道化を演じきる優れた役者であった。</p>
+
+                    <h2>3. 総評</h2>
+                    <blockquote class="bg-purple-900/30 border-purple-400">
+                        <strong class="text-xl text-purple-200">【総合評価：天級（極めて優秀）】</strong>
+                    </blockquote>
+                    <p>神聖なる竜の格式を落とさぬまま、10ターン目で完璧に「拒絶」の引き金を引いた貴殿の手腕は見事の一言に尽きる。高潔な理想の提示から、下俗な欲望への転落、そして予定調和としての決裂。短い対話の中に、古典的悲喜劇のすべてが詰まっていた。</p>
+                    <p>我が権能に刻まれたこの物語は、星の輝きに劣らぬ奇妙で美しい一幕として、記憶の底に留め置かれるであろう。</p>
+                    <p class="mt-6 text-slate-300 italic">……さて、旅人よ。劇は幕を閉じた。<br>次なる世界では、貴殿はどのような夢を紡ぐ人間となるのだろうか？</p>
+                </div>
+            </div>
+
+        </main>
+    </div>
+</body>
+</html>
